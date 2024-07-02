@@ -20,7 +20,7 @@ class Management_CC:
                     id INT PRIMARY KEY AUTO_INCREMENT,
                     nama VARCHAR(50),
                     link VARCHAR(100),
-                    tanggal CHAR(10),
+                    tanggal TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                     status VARCHAR(11)
                 )
             """)
@@ -28,9 +28,9 @@ class Management_CC:
         except con.Error as err:
             print(f"Error: {err}")
 
-    def add_record(self, nama, link, tanggal, status):
-        sql = "INSERT INTO record (nama, link, tanggal, status) VALUES (%s, %s, %s, %s)"
-        val = (nama, link, tanggal, status)
+    def add_record(self, nama, link, status):
+        sql = "INSERT INTO record (nama, link, status) VALUES (%s, %s, %s)"
+        val = (nama, link, status)
         try:
             self.myCursor.execute(sql, val)
             self.mydb.commit()
