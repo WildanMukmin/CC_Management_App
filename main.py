@@ -88,13 +88,24 @@ class CapCutGUI:
     def __init__(self, root):
         self.root = root
         self.root.title("CapCut Management")
+        self.root.geometry("1000x600")
         self.db_manager = Management_CC()
         
         # Create GUI components
         self.create_widgets()
 
     def create_widgets(self):
-        pass
+        # <----------------- FRAME SIDE BAR ----------------->
+        self.side_bar = CTkFrame(self.root, corner_radius=0, fg_color="red")
+        self.side_bar.place(relwidth = 0.25, relheight = 1, relx = 0, rely = 0, anchor = NW)
+        
+        # <----------------- FRAME MAIN ----------------->
+        self.side_bar = CTkFrame(self.root, corner_radius=0, fg_color="blue")
+        self.side_bar.place(relwidth = 0.75, relheight = 1, relx = 0.25, rely = 0, anchor = NW)
+
+        
+        
+        
 
 root = CTk()
 app = CapCutGUI(root)
